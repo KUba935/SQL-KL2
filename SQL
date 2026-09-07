@@ -1,0 +1,3 @@
+SELECT * FROM faktury a INNER JOIN platnosci b ON a.id_faktury = b.id_platnosci;
+SELECT a.imie, a.nazwisko, b.komentarz FROM klienci a INNER JOIN opinie b ON a.id_klienta = b.id_opinii;
+SELECT * FROM klienci a INNER JOIN faktury b ON a.id_klienta = b.id_faktury;
