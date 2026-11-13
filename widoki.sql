@@ -1,0 +1,2 @@
+CREATE VIEW aktywni_klienci AS SELECT k.imie, k.nazwisko, MAX(w.data_wypozyczenia) AS data_ostatniego_wypozyczenia FROM klienci k JOIN wypozyczenia w ON k.id_klienta = w.id_klienta GROUP BY k.id_klienta, k.imie, k.nazwisko HAVING MAX(w.data_wypozyczenia) >= DATE_SUB(CURDATE(), INTERVAL 12 MONTH);
+CREATE VIEW calkowity_czas_wypozyczen AS SELECT k.imie, k.nazwisko, SUM(DATEDIFF(w.data_zwrotu, w.data_wypozyczenia)) AS calkowity_czas_w_dniach FROM klienci k JOIN wypozyczenia w ON k.id_klienta = w.id_klienta GROUP BY k.id_klienta, k.imie, k.nazwisko;
